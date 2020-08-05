@@ -21,7 +21,7 @@ function Home() {
   return(
     <div>
       <Header />
-      <div class="container">
+      <div className="container">
         <PokemonList />
       </div>
     </div>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import styles from './app.css';
+import './app.css';
 import Spinner from "./helper/spinner"
 import { Link } from 'react-router-dom';
 import LOCAL_POKEMON_DATA from './config';
+import ucfirst from './functions/upcase-first-char';
 class PokemonFrame extends Component {
 
     constructor(props) {
@@ -17,7 +18,7 @@ class PokemonFrame extends Component {
     componentDidMount() {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.name}`).then((response) => {
             this.setState({
-                image: response.data.sprites.front_default
+                image: response.data.sprites.other.dream_world.front_default
             })
             localStorage.setItem(LOCAL_POKEMON_DATA+`${response.data.name}`, JSON.stringify(response.data))
         })
@@ -25,9 +26,9 @@ class PokemonFrame extends Component {
 
     if(loading) {
         return(
-            <div class="col-6 col-md-3" key={this.state.name}>
-                <div class="card mb-4" style={styles.card}>
-                    <div class="card-body text-center">
+            <div className="col-6 col-md-3" key={this.state.name}>
+                <div className="card mb-4">
+                    <div className="card-body text-center">
                         <Spinner />
                     </div>
                 </div>
@@ -35,20 +36,14 @@ class PokemonFrame extends Component {
         )
     }
 
-    
-    ucfirst(str) {
-        var firstLetter = str.substr(0, 1);
-        return firstLetter.toUpperCase() + str.substr(1);
-    }
-
     render() {
         return (
-            <div class="col-6 col-md-3" key={this.state.name}>
+            <div className="col-6 col-md-3" key={this.state.name}>
                 <Link to={`/${this.state.name}`}>
-                    <div class="card mb-4" style={styles.card}>
-                        <img class="card-img-top" src={this.state.image} alt="pokemon"></img>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{this.ucfirst(this.state.name)}</h5>
+                    <div className="card mb-4">
+                        <img className="card-img-top" src={this.state.image} alt="pokemon"></img>
+                        <div className="card-body text-center">
+                            <h5 className="card-title">{ucfirst(this.state.name)}</h5>
                         </div>
                     </div>
                 </Link>

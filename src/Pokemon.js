@@ -7,9 +7,9 @@ export default function PokemonList({ pokemon }) {
         console.log(name)
     }
     return (
-        <div class="mt-4">
-            <div class="row">
-            <div class="card-deck">
+        <div className="mt-4">
+            <div className="row">
+            <div className="card-deck">
                 {pokemon.map(p => (
                     <PokemonFrame name={p} onHandleClick={handleClick} />
                 ))}

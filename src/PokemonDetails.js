@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from './helper/header';
-// import axios from 'axios';
 import LOCAL_POKEMON_DATA from './config';
-
+import Gallery from './helper/gallery';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function PokemonDetails() {
     const { slug } = useParams();
 
     const [pokemon, setPokemon] = useState([])
-
     useEffect(() => {
         getData();
         async function getData () {
@@ -17,17 +16,37 @@ export default function PokemonDetails() {
             setPokemon(result);
         }
     }, [slug])
+    console.log(pokemon)
     return (
         <div>
             <Header />
-            <div class="container">
-                {console.log(pokemon)}
-                <div class="row">
-                    <div>
-                        <h1> {pokemon.name} </h1>
-                        <h1> {JSON.stringify(pokemon.sprites)} </h1>
+            <div className="container jumbotron">
+                    <div className="row">
+                        <div className="col-md-9">
+                            <ul class="list-group">
+                                <p class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div class="image-parent">
+                                    {pokemon.sprites && <img src={pokemon.sprites.other.dream_world.front_default} class="img-fluid" alt="quixote" />}
+                                </div>
+                                <div className="col-md-2">
+                                    <h1> {pokemon.name} </h1> 
+                                    <p><small>by <a href={'https://pokeapi.co'} target="_blank" rel="noopener noreferrer">pokeapi.co</a></small></p>
+                                </div>
+                                <div class="flex-column">
+                                    <span class="badge badge-primary badge-pill"> {`Height ${pokemon.height}`}</span><br />
+                                    <span class="badge badge-secondary badge-pill"> {`Weight ${pokemon.weight}`}</span><br />
+                                    <span class="badge badge-info badge-pill"> {`Base experience ${pokemon.base_experience}`}</span>
+                                </div>
+                                </p>
+                            </ul>
+                        </div>
+                        <div className="col-md-3">
+                        { pokemon.sprites&& <Gallery images={pokemon} name={pokemon.name} />}
+                        </div>
                     </div>
-                </div>
+                    <div className="abilities-table">
+
+                    </div>
             </div>
         </div>
     )

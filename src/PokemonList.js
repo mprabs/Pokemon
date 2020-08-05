@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div class="text-center">
+    <div className="text-center">
       <Pagination 
       goToNextPage = { nextPageUrl ? goToNextPage : null }
       goToPrevPage= { prevPageUrl ? goToPrevPage : null} 
