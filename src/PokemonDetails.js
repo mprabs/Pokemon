@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from './helper/header';
 import LOCAL_POKEMON_DATA from './config';
+import './app.css';
 import Gallery from './helper/gallery';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -19,7 +20,7 @@ export default function PokemonDetails() {
     console.log(pokemon)
     return (
         <div>
-            <Header />
+            <Header back={true} onBack={() => window.history.back()} />
             <div className="container jumbotron">
                     <div className="row">
                         <div className="col-md-9">
@@ -29,7 +30,7 @@ export default function PokemonDetails() {
                                     {pokemon.sprites && <img src={pokemon.sprites.other.dream_world.front_default} class="img-fluid" alt="quixote" />}
                                 </div>
                                 <div className="col-md-2">
-                                    <h1> {pokemon.name} </h1> 
+                                    <h4 className="pokemon__title"> {pokemon.name} </h4> 
                                     <p><small>by <a href={'https://pokeapi.co'} target="_blank" rel="noopener noreferrer">pokeapi.co</a></small></p>
                                 </div>
                                 <div class="flex-column">

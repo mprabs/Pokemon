@@ -27,4 +27,8 @@ img {
     height: 200%;
     object-fit: contain
   }
+
+  /* .pokemon__title {
+      word-wrap: break-word;
+  } */
   
