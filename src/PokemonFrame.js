@@ -21,6 +21,8 @@ class PokemonFrame extends Component {
                 image: response.data.sprites.other.dream_world.front_default
             })
             localStorage.setItem(LOCAL_POKEMON_DATA+`${response.data.name}`, JSON.stringify(response.data))
+        }).catch(err => {
+            console.log(err)
         })
     }
 
@@ -39,7 +41,7 @@ class PokemonFrame extends Component {
     render() {
         return (
             <div className="col-6 col-md-3" key={this.state.name}>
-                <Link to={`/${this.state.name}`}>
+                <Link to={`/${this.state.name}`} style={{ textDecoration: 'none' }}>
                     <div className="card mb-4">
                         <img className="card-img-top" src={this.state.image} alt="pokemon"></img>
                         <div className="card-body text-center">

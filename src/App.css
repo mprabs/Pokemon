@@ -1,5 +1,9 @@
 .card:hover{
-    background-color: azure;
+    background-color: rgb(114, 231, 231);
+}
+
+.card {
+  transition: 100ms ease-in;
 }
 
 .card-img-top:hover {
@@ -32,3 +36,19 @@ img {
       word-wrap: break-word;
   } */
   
+  .img-fluid{
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .my-slidecontent {
+    color: white;
+  }
+
+  .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

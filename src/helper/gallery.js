@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel } from "react-responsive-carousel";
-
+import ucfirst from "../functions/upcase-first-char";
 
 class Gallery extends Component  {
     render() {
@@ -8,24 +8,24 @@ class Gallery extends Component  {
         // const imgx = images.sprites.versions['generation-i'];
         console.log()
         return(
-            <Carousel autoPlay>
+            <Carousel autoPlay={true} infiniteLoop={true} transitionTime="1000">
                 <div className="item">
-                    <p className="my-slidecontent">{name}</p>
+                    <p className="my-slidecontent">{name && ucfirst(name)}</p>
                     <img className="item-img" alt="" src={images.sprites.front_default} />
                     <p className="legend">Front default</p>
                 </div>
                 <div className="item">
-                    <p className="my-slidecontent">{name}</p>
+                    <p className="my-slidecontent">{name && ucfirst(name)}</p>
                     <img className="item-img" alt="" src={images.sprites.back_default} />
                     <p className="legend">Back default</p>
                 </div>
                 <div className="item">
-                    <p className="my-slidecontent">{name}</p>
+                    <p className="my-slidecontent">{name && ucfirst(name)}</p>
                     <img className="item-img" alt="" src={images.sprites.front_shiny} />
                     <p className="legend">Front shiny</p>
                 </div>
                 <div className="item">
-                    <p className="my-slidecontent">{name}</p>
+                    <p className="my-slidecontent">{name && ucfirst(name)}</p>
                     <img className="item-img" alt="" src={images.sprites.back_shiny} />
                     <p className="legend">Back shiny</p>
                 </div>

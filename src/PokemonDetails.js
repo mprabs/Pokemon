@@ -30,7 +30,7 @@ export default function PokemonDetails() {
                                     {pokemon.sprites && <img src={pokemon.sprites.other.dream_world.front_default} class="img-fluid" alt="quixote" />}
                                 </div>
                                 <div className="col-md-2">
-                                    <h4 className="pokemon__title"> {pokemon.name} </h4> 
+                                    <h4 className="pokemon__title"> {pokemon.name && pokemon.name.toUpperCase()} </h4> 
                                     <p><small>by <a href={'https://pokeapi.co'} target="_blank" rel="noopener noreferrer">pokeapi.co</a></small></p>
                                 </div>
                                 <div class="flex-column">
